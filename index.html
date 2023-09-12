@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pedido Especial</title>
+<style>
+  body {
+    background-color: #fff;
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+
+  .container {
+    padding: 100px 0;
+  }
+
+  .question {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .button {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+
+  .special-message {
+    font-size: 32px;
+    font-weight: bold;
+    display: none;
+    margin-top: 50px;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="question">Quer namorar comigo?</div>
+    <div class="buttons">
+      <button class="button" id="yes" onclick="showMessage('Mal posso esperar para passar cada momento ao seu lado minha princesa!')">Sim</button>
+      <button class="button" id="no" onclick="moveButton()">Não</button>
+    </div>
+    <div class="special-message" id="specialMessage"></div>
+  </div>
+
+  <script>
+    function showMessage(message) {
+      document.getElementById('specialMessage').textContent = message;
+      document.getElementById('specialMessage').style.display = 'block';
+      document.getElementById('yes').style.display = 'none';
+      document.getElementById('no').style.display = 'none';
+    }
+
+    function moveButton() {
+      let noButton = document.getElementById('no');
+      const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
+      const buttonWidth = noButton.clientWidth;
+      const buttonHeight = noButton.clientHeight;
+
+      const maxX = viewportWidth - buttonWidth;
+      const maxY = viewportHeight - buttonHeight;
+
+      const randomX = Math.random() * maxX;
+      const randomY = Math.random() * maxY;
+
+      noButton.style.position = 'absolute';
+      noButton.style.left = randomX + 'px';
+      noButton.style.top = randomY + 'px';
+    }
+  </script>
+</body>
+</html>
